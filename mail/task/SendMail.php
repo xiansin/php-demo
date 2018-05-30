@@ -6,9 +6,9 @@
  * DateTime: 2018/5/14 14:08
  * @description
  */
-require_once '../bootstrap/ini.php';
-require_once '../libs/Log.php';
-require_once '../libs/QQSendMail.php';
+require_once __DIR__.'/../bootstrap/ini.php';
+require_once __DIR__.'/../libs/Log.php';
+require_once __DIR__.'/../libs/QQSendMail.php';
 class SendMail
 {
     private $_mail = null;

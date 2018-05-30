@@ -2,7 +2,7 @@
 
 
 define("ENTER", "\r\n");
-require_once '../bootstrap/ini.php';
+require_once __DIR__.'/../bootstrap/ini.php';
 class Log
 {
 

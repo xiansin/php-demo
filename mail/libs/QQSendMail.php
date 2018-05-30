@@ -6,8 +6,8 @@
  * DateTime: 2018/5/14 14:23
  * @description
  */
-require '../core/PHPMailer/src/PHPMailer.php';
-require '../core/PHPMailer/src/SMTP.php';
+require __DIR__.'/../core/PHPMailer/src/PHPMailer.php';
+require __DIR__.'/../core/PHPMailer/src/SMTP.php';
 
 class QQSendMail
 {

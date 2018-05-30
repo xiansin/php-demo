@@ -6,4 +6,4 @@
  * DateTime: 2018/5/14 14:08
  * @description
  */
-require '../config/config.php';
+require __DIR__.'/../config/config.php';
