@@ -67,12 +67,13 @@ class QQSendMail
      * 发送邮件
      *
      * @version             v1.0
-     * @author              JianJia.Zhou
-     * @changeTime          2018/5/14 14:46
+     * @author              JianJia.Zhou<jianjia.zhou@longmaster.com.cn>
+     * @changeTime          dt
      * @param string $address
      * @param string $title
      * @param string $content
      * @return bool
+     * @throws Exception
      */
     public function send($address = '', $title = '', $content = '')
     {
@@ -98,10 +99,11 @@ class QQSendMail
      * 添加附件
      *
      * @version             v1.0
-     * @author              JianJia.Zhou
-     * @changeTime          2018/5/14 14:46
+     * @author              JianJia.Zhou<jianjia.zhou@longmaster.com.cn>
+     * @changeTime          dt
      * @param string $path
      * @return bool
+     * @throws Exception
      */
     public function addFile($path = '')
     {

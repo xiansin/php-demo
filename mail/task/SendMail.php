@@ -13,6 +13,12 @@ class SendMail
 {
     private $_mail = null;
 
+    private $_startDt = '2018-05-05';
+
+    private $_spaceDays = 26;
+
+    private $_address = '1358763480@qq.com';
+
     /**
      * SendMail constructor.
      */
@@ -29,14 +35,33 @@ class SendMail
      */
     public function run()
     {
-        $title = "亲亲小媳妇儿哟，这是测试邮件哦";
-        $content = "测试给你发送你的大姨妈哦<br><img src='http://demo.xiansin.com/images/2.jpg'>";
-        //$address = '1358763480@qq.com';
-        $address = '849841639@qq.com';
-        $status = $this->_mail->send($address,$title,$content);
-        $msg = '发送邮件:'.$address.ENTER.'发送标题:'.$title.ENTER.'发送内容:'.$content;
-        Log::logWrite(4,$msg,'发送结果:'.json_encode($status),'send_mail');
+        if($this->isSend()){
+            try{
+                $title = "亲亲小媳妇儿哟，你的大姨妈要来了哦";
+                $next_time = date('Y-m-d',strtotime($this->_startDt."+{$this->_spaceDays}days"));
+                $content = "预计时间:<b style='color: red'>$next_time</b><br><img src='http://demo.xiansin.com/images/2.jpg'>";
+                $status = $this->_mail->send($this->_address,$title,$content);
+                $msg = '发送邮件:'.$this->_address.ENTER.'发送标题:'.$title.ENTER.'发送内容:'.$content;
+                Log::logWrite(4,$msg,'发送结果:'.json_encode($status),'send_mail');
+            }catch (\Exception $e){
+                Log::logWrite(4,'发送异常',$e->getMessage(),'error');
+            }
+        }
+    }
+
+    private function isSend()
+    {
+    	$s = strtotime($this->_startDt);
+    	$n = time();
+        $e = strtotime($this->_startDt."+{$this->_spaceDays}days");
+    	$m = $e - $n;
+    	$t = 1 * 60 * 60* 24; #4天
+    	if($m <= $t && $t >= $t){
+    	    return true;
+        }
+        return false;
     }
 }
+
 $sendMail = new SendMail();
 $sendMail->run();
